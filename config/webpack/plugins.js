@@ -4,11 +4,23 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import WebpackManifestPlugin from 'webpack-manifest-plugin'
 
 import params from './params'
 import paths from './paths'
 
-const forkTsChecker = new ForkTsCheckerWebpackPlugin({
+const define = new webpack.DefinePlugin({
+        DEBUG: JSON.stringify(params.debug),
+        API: JSON.stringify(params.api),
+        SERVICE_WORKER_NAME: JSON.stringify(params.serviceWorkerName),
+        ASSET_MANIFEST_FILE_NAME: JSON.stringify(params.assetManifestFileName),
+        SW_ID: JSON.stringify(new Date().toISOString()),
+        'process.env.NODE_ENV': JSON.stringify(params.debug ? 'development' : 'production'),
+    })
+    , provide = new webpack.ProvidePlugin({
+        trace: ['#/utils/debug', 'trace'],
+    })
+    , forkTsChecker = new ForkTsCheckerWebpackPlugin({
         tsconfig: paths.tsconfigFile,
         formatter: 'codeframe',
         eslint: true,
@@ -16,18 +28,10 @@ const forkTsChecker = new ForkTsCheckerWebpackPlugin({
             configFile: paths.eslintConfigFile,
         },
     })
-    , define = new webpack.DefinePlugin({
-        DEBUG: JSON.stringify(params.debug),
-        API: JSON.stringify(params.api),
-        SERVICE_WORKER_NAME: JSON.stringify(params.serviceWorkerName),
-        'process.env.NODE_ENV': JSON.stringify(params.debug ? 'development' : 'production'),
-    })
-    , provide = new webpack.ProvidePlugin({
-        trace: ['#/utils/debug', 'trace'],
-    })
 
 
 const appPlugins = [
+        // new CleanWebpackPlugin(),
         forkTsChecker,
         define,
         provide,
@@ -42,11 +46,21 @@ const appPlugins = [
             filename: 'index.html',
             template: `${paths.assets}/index.html`,
         }),
+        new WebpackManifestPlugin({
+            fileName: params.assetManifestFileName,
+            filter: _ => !_.name.endsWith('.map'),
+        }),
         params.analyze && new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false }),
-        new CleanWebpackPlugin(),
     ].filter(_ => _)
     , swPlugins = [
-        forkTsChecker,
+        new ForkTsCheckerWebpackPlugin({
+            tsconfig: paths.tsconfigFileSW,
+            formatter: 'codeframe',
+            eslint: true,
+            eslintOptions: {
+                configFile: paths.eslintConfigFile,
+            },
+        }),
         define,
         provide,
     ]

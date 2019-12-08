@@ -2,7 +2,10 @@
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "tsconfigRootDir": "./",
-        "project": "./tsconfig.json",
+        "project": [
+            "./tsconfig.json",
+            "./app/service-worker/tsconfig.json"
+        ],
         "ecmaVersion": 2018,
         "sourceType": "module",
         "ecmaFeatures": {
