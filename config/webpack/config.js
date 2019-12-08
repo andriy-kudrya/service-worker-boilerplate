@@ -5,7 +5,7 @@ import { appRules, swRules } from './rules'
 import devServer from './dev-server'
 
 const config = {
-    context: paths.app,
+    context: paths.src,
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.local.json', '.json'],
         alias: {
@@ -23,7 +23,7 @@ export default [
         name: 'app',
         target: 'web',
         entry: {
-            app: ['./bootstrap/main'],
+            app: ['./app/bootstrap/main'],
         },
         output: {
             path: paths.output,
@@ -55,7 +55,7 @@ export default [
         name: 'sw',
         target: 'webworker',
         entry: {
-            [params.serviceWorkerName]: ['./service-worker/main'],
+            [params.serviceWorkerName]: ['./sw/main'],
         },
         output: {
             path: paths.output,

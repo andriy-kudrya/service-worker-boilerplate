@@ -60,14 +60,14 @@ const babelLoader = {
     }
 
 const commonRules = [
-        {
-            test: /\.jsx?$/,
-            include: paths.app,
-            use: [babelLoader],
-        },
+        // {
+        //     test: /\.jsx?$/,
+        //     include: paths.src,
+        //     use: [babelLoader],
+        // },
         {
             test: /\.tsx?$/,
-            include: paths.app,
+            include: paths.src,
             use: [
                 babelLoader,
                 {
@@ -78,7 +78,7 @@ const commonRules = [
         },
         {
             enforce: 'pre',
-            include: paths.app,
+            include: paths.src,
             test: /\.jsx?$/,
             use: [{
                 loader: 'eslint-loader',
