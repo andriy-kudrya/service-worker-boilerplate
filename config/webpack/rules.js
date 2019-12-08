@@ -59,40 +59,41 @@ const babelLoader = {
         },
     }
 
-const rules = [
-    {
-        test: /\.jsx?$/,
-        include: paths.app,
-        use: [babelLoader],
-    },
-    {
-        test: /\.tsx?$/,
-        include: paths.app,
-        use: [
-            babelLoader,
-            {
-                loader: 'ts-loader',
-                options: { transpileOnly: true },
-            },
-        ],
-    },
-    {
-        enforce: 'pre',
-        include: paths.app,
-        test: /\.jsx?$/,
-        use: [{
-            loader: 'eslint-loader',
-            options: {
-                configFile: paths.eslintConfigFile,
-                formatter: 'codeframe',
-                emitError: true,
-                failOnError: true,
-                emitWarning: false,
-                failOnWarning: false,
-            },
-        }],
-    },
-    scssRule,
-].filter(_ => _)
+const commonRules = [
+        {
+            test: /\.jsx?$/,
+            include: paths.app,
+            use: [babelLoader],
+        },
+        {
+            test: /\.tsx?$/,
+            include: paths.app,
+            use: [
+                babelLoader,
+                {
+                    loader: 'ts-loader',
+                    options: { transpileOnly: true },
+                },
+            ],
+        },
+        {
+            enforce: 'pre',
+            include: paths.app,
+            test: /\.jsx?$/,
+            use: [{
+                loader: 'eslint-loader',
+                options: {
+                    configFile: paths.eslintConfigFile,
+                    formatter: 'codeframe',
+                    emitError: true,
+                    failOnError: true,
+                    emitWarning: false,
+                    failOnWarning: false,
+                },
+            }],
+        },
+    ].filter(_ => _)
+    , appRules = commonRules.concat(scssRule)
+    , swRules = commonRules
 
-export default rules
+export { appRules, swRules }

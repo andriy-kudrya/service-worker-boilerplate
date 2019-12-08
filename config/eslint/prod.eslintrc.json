@@ -129,11 +129,11 @@
         "semi": "off",
         "@typescript-eslint/semi": ["warn", "never"],
         "semi-spacing": ["warn"],
-        "space-before-function-paren": ["warn", {
-            "named": "never",
-            "anonymous": "always",
-            "asyncArrow ": "always"
-        }],
+        // "space-before-function-paren": ["warn", {
+        //     "named": "never",
+        //     "anonymous": "always",
+        //     "asyncArrow ": "always"
+        // }],
         "space-in-parens": ["warn"],
         "space-infix-ops": ["warn", {"int32Hint": false}],
         "space-unary-ops": ["warn"],
