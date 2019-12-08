@@ -1,0 +1,168 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "tsconfigRootDir": "./",
+        "project": "./tsconfig.json",
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true
+        }
+    },
+    "rules": {
+        "strict": "error",
+        "no-console": "warn",
+        "no-alert": "warn",
+        "no-caller": "warn",
+        "no-else-return": "warn",
+        "no-eval": "warn",
+        "no-implied-eval": "warn",
+        "no-extend-native": "warn",
+        "no-with": "warn",
+        "react/prop-types": "off",
+        "react/no-children-prop": "off",
+        "no-constant-condition": ["error", {
+            "checkLoops": false
+        }],
+        "prefer-const": "warn",
+        "eqeqeq": ["error", "smart"],
+        "no-var": "error",
+        "no-throw-literal": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["warn", {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "all",
+            "argsIgnorePattern": "^_",
+            "caughtErrors": "all",
+            "caughtErrorsIgnorePattern": "^_"
+        }],
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/member-delimiter-style": ["warn", {
+            "multiline": {
+                "delimiter": "none",
+                "requireLast": true
+            },
+            "singleline": {
+                "delimiter": "comma",
+                "requireLast": false
+            }
+        }],
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+
+        // "@typescript-eslint/array-type": ["warn", {
+        //     "default": "array",
+        //     "readonly": "array"
+        // }],
+
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": ["warn", {
+            "additionalHooks": "^use.*Dep$"
+        }],
+
+        // Stylistic Issues
+        "@typescript-eslint/type-annotation-spacing": ["warn"],
+        "array-bracket-spacing": ["warn"],
+        "arrow-body-style": ["warn", "as-needed"],
+        "arrow-parens": ["warn", "as-needed"],
+        "arrow-spacing": ["warn"],
+        "block-spacing": ["warn"],
+        "brace-style": "off",
+        "@typescript-eslint/brace-style": ["warn", "stroustrup", { "allowSingleLine": true }],
+        "comma-dangle": ["warn", {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "always-multiline",
+            "exports": "always-multiline",
+            "functions": "only-multiline"
+        }],
+        "comma-spacing": ["warn"],
+        "comma-style": ["warn", "first", {
+            "exceptions": {
+                "ArrayExpression": true,
+                "ArrayPattern": true,
+                "ArrowFunctionExpression": true,
+                "CallExpression": true,
+                "FunctionDeclaration": true,
+                "FunctionExpression": true,
+                "ImportDeclaration": true,
+                "ObjectExpression": true,
+                "ObjectPattern": true,
+                "VariableDeclaration": false,
+                "NewExpression": true
+            }
+        }],
+        "computed-property-spacing": ["warn"],
+        "dot-location": ["warn", "property"],
+        "dot-notation": ["warn"],
+        "eol-last": ["warn"],
+        "func-call-spacing": "off",
+        "@typescript-eslint/func-call-spacing": ["warn", "never"],
+        "function-call-argument-newline": ["warn", "consistent"],
+        "function-paren-newline": ["warn", "consistent"],
+        "jsx-quotes": ["warn", "prefer-single"],
+        "key-spacing": ["warn"],
+        "keyword-spacing": ["warn"],
+        "newline-per-chained-call": ["warn"],
+        "no-tabs": ["warn"],
+        "no-trailing-spaces": ["warn"],
+        "no-unneeded-ternary": ["warn"],
+        "no-useless-computed-key": ["warn"],
+        "no-useless-constructor": ["warn"],
+        "no-useless-rename": ["warn"],
+        "no-whitespace-before-property": ["warn"],
+        "object-curly-newline": ["warn"],
+        "object-curly-spacing": ["warn", "always"],
+        "object-property-newline": ["warn", { "allowAllPropertiesOnSameLine": true }],
+        "quote-props": ["warn", "as-needed"],
+        "quotes": "off",
+        "@typescript-eslint/quotes": ["warn", "single", {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+        }],
+        "rest-spread-spacing": ["warn"],
+        "semi": "off",
+        "@typescript-eslint/semi": ["warn", "never"],
+        "semi-spacing": ["warn"],
+        "space-before-function-paren": ["warn", {
+            "named": "never",
+            "anonymous": "always",
+            "asyncArrow ": "always"
+        }],
+        "space-in-parens": ["warn"],
+        "space-infix-ops": ["warn", {"int32Hint": false}],
+        "space-unary-ops": ["warn"],
+        "switch-colon-spacing": ["warn"],
+        "template-tag-spacing": ["warn"]
+    },
+    "plugins": ["@typescript-eslint", "react", "react-hooks"],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "linkComponents": [
+            // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+            "Hyperlink",
+            {"name": "Link", "linkAttribute": "routeName"}
+        ]
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react/recommended"
+    ],
+    "env": {
+    	"browser": true,
+        "es6": true
+    },
+    "globals": {
+        "DEBUG": true
+    }
+}

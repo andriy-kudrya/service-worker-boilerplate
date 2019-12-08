@@ -1,0 +1,30 @@
+{
+    "files.exclude": {
+        "package-lock.json": true,
+        "*.sublime-workspace": true,
+        ".vscode": true,
+        "node_modules": true,
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "eslint.autoFixOnSave": true,
+    "eslint.options": { "configFile": "./config/eslint/prod.eslintrc.json" },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "typescript",
+            "autoFix": true,
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true,
+        }
+    ],
+    "cSpell.words": [
+        "testid"
+    ],
+    "typescript.format.semicolons": "remove",
+    "javascript.format.semicolons": "remove",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single"
+}
