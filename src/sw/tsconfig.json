@@ -1,5 +1,5 @@
 {
-    "extends": "../../tsconfig",
+    "extends": "../tsconfig",
     "compilerOptions": {
         "lib": [
             "es2018",
@@ -7,6 +7,6 @@
         ],
         "types": []
     },
-    "include": ["./**/*"],
+    "include": ["./"],
     "exclude": []
 }

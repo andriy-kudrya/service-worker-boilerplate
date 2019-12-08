@@ -3,7 +3,7 @@
     "parserOptions": {
         "tsconfigRootDir": "./",
         "project": [
-            "./tsconfig.json",
+            "./src/tsconfig.json",
             "./src/sw/tsconfig.json"
         ],
         "ecmaVersion": 2018,

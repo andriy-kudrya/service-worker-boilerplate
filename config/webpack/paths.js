@@ -9,7 +9,7 @@ const root = path.join(__dirname, '..', '..')
     , output = path.join(root, 'dist')
     , config = path.join(root, 'config')
     , eslintConfigFile = path.join(config, 'eslint', params.debug ? 'dev.eslintrc.json' : 'prod.eslintrc.json')
-    , tsconfigFile = path.join(root, 'tsconfig.json')
+    , tsconfigFile = path.join(src, 'tsconfig.json')
     , tsconfigFileSW = path.join(sw, 'tsconfig.json')
 
 export default {
