@@ -10,10 +10,11 @@ function discoverAssets(): Promise<string[]> {
                     : Promise.reject(res.status)
         )
         .then(Object.values)
-        .then(_ => _.concat('/'))
 }
 
 self.addEventListener('install', event => {
+    self.skipWaiting()
+
     event.waitUntil(
         Promise.all([caches.open(SW_ID), discoverAssets()])
             .then(([cache, assets]) => cache.addAll(assets))
@@ -28,6 +29,6 @@ self.addEventListener('activate', event => {
 
                 return Promise.all([keysToDelete.map(_ => caches.delete(_))])
             })
-            .then(() => clients.claim())
+            .then(() => self.clients.claim())
     )
 })

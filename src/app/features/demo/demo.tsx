@@ -1,16 +1,8 @@
 import { React } from '#/facade/react'
-import { useEffect } from '#/facade/hooks'
-import config from '#/constants/config'
+// import { useEffect } from '#/facade/hooks'
 
 function Demo() {
     const DEMO_PAGE = 'Demo page'
-
-    useEffect(
-        () => {
-            navigator.serviceWorker.register(`${config.serviceWorkerName}.js`)
-        },
-        []
-    )
 
     return (
         <div className='container'>
